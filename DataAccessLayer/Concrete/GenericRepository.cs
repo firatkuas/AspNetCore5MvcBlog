@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,37 +13,37 @@ namespace DataAccessLayer.Concrete
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         
-        public void AddCategory(T category)
+        public void Add(T entity)
         {
             using var c = new Context();
-            c.Add(category);
+            c.Add(entity);
             c.SaveChanges();
         }
 
-        public List<T> GetCategories()
+        public List<T> GetAll()
         {
             using var c = new Context();
             return c.Set<T>().ToList();
         }
 
-        public T GetCategory(int id)
+        public T Get(int id)
         {
             using var c = new Context();
             return c.Set<T>().Find(id);
         }
 
-        public void RemoveCategory(T category)
+        public void Remove(T entity)
         {
             using var c = new Context();
-            c.Remove(category);
+            c.Remove(entity);
             c.SaveChanges();
         }
 
-        public void UpdateCategory(T category)
+        public void Update(T entity)
         {
             using var c = new Context();
-            c.Update(category);
+            c.Update(entity);
             c.SaveChanges();
         }
-    }
+	}
 }

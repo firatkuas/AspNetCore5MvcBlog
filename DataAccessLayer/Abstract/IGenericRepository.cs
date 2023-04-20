@@ -9,10 +9,10 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGenericRepository<T> where T : class
     {
-        List<T> GetCategories();
-        T GetCategory(int id);
-        void AddCategory(T category);
-        void RemoveCategory(T category);
-        void UpdateCategory(T category);
+        List<T> GetAll();
+        T Get(int id);
+        void Add(T entity);
+        void Remove(T entity);
+        void Update(T entity);
     }
 }

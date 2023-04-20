@@ -11,30 +11,36 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        public CategoryManager(ICategoryDal categoryDal) { }
+        private readonly ICategoryDal _categoryDal;
+
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal; 
+        }
         public void AddCategory(Category category)
         {
-            throw new NotImplementedException();
+
+            _categoryDal.Add(category);
         }
 
         public List<Category> GetAllCategories()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
         public Category GetCategoryById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.Get(id);
         }
 
         public void RemoveCategory(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Remove(category);
         }
 
         public void UpdateCategory(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(category);
         }
     }
 }
